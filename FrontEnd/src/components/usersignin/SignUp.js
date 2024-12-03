@@ -13,7 +13,7 @@ const Signup=()=>{
         e.preventDefault();
         try{
             const hashedPassword = await bcrypt.hash(password, 10);
-            await axios.post("http://localhost:8000/signup/",{
+            await axios.post("https://travelaround-backend.onrender.com/signup/",{
                 fname,lname,email,password:hashedPassword
             })
             .then(res=>{
