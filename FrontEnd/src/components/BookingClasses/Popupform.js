@@ -30,7 +30,7 @@ const BookingForm=(props)=>{
     const { name, startDate, endDate,numPersons, numRooms } = bookingData;
     const price = props.price;
     try {
-      const response = await axios.post("http://localhost:8000/platinum/", {
+      const response = await axios.post("https://travelaround-backend.onrender.com/platinum/", {
         name,
         startDate,
         endDate,
