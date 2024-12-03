@@ -5,7 +5,6 @@ import "../usersignin/signin.css";
 const Login=(props)=>{
     const history = useNavigate();
     const[email,setEmail]=useState('');
-    const[isLoggedIn,setIsLoggedIn]=useState("");
     const[password,setPassword]=useState('');
     async function submit(e){
         e.preventDefault();
