@@ -1,0 +1,29 @@
+.form-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url("../assets/hotel1.jpeg");
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  z-index: 1;
+  color:white;
+}
+
+.close-button {
+  margin-top:0.4rem;
+  margin-right: 1.2rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color:white;
+  cursor: pointer;
+}
+
+.book{
+  background-color: red;
+  color:white;
+  border-radius: 1rem;
+}
+

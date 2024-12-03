@@ -1,0 +1,35 @@
+#container{
+    background-image: url("../assets/login.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+}
+#submit_btn{
+    margin-top: 2rem;
+    height:2.5rem;
+    width:6rem;
+    border: none;
+    margin-left: 5rem;
+    border-radius: 0.2rem;
+    font-weight: bold;
+    color:Black;
+}
+.or{
+    margin-left: 7rem;
+    font-weight: bold;
+}
+@media screen and (max-width:1600px) {
+    #row{
+        margin-left:34rem;
+    }
+}
+@media screen and (max-width:1400px) {
+    #row{
+        margin-left:20rem;
+    }
+}
+@media screen and (max-width:876px) {
+    #row{
+        margin-left:0rem;
+    }
+}

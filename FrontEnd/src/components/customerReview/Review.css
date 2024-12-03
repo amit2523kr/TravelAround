@@ -1,0 +1,41 @@
+.cardBody{
+    background-color:lightgray;
+     padding:3rem;
+}
+.cardCarousel{
+    width:50%;
+    height:10%;
+    align-items:center; 
+    margin-left:20rem;
+}
+@media screen and (max-width:1250px) {
+    .cardBody{
+         padding:2rem;
+    }
+    .cardCarousel{
+        width:50%;
+        height:10%;
+        align-items:center; 
+        margin-left:20rem;
+    }
+}
+@media screen and (max-width:1050px) {
+    .cardBody{
+        padding:2rem;
+   }
+   .cardCarousel{
+       width:100%;
+       height:10%;
+       align-items:center; 
+       margin-left:0rem;
+   }
+}
+@media screen and (max-width:576px) {
+    .cardBody h5,h1{
+        font-size:0.8em;
+   }
+    .cardBody p{
+        font-size:0.6em;
+   }
+   
+}

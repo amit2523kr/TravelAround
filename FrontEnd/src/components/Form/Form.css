@@ -1,0 +1,45 @@
+   #contact_form{
+     margin-left:30rem;
+     margin-top: 2rem;
+   }
+   .form_input {
+    display: block;
+    width: 23rem;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top:1rem;
+  }
+  
+  #formSubmit_btn[type='submit'] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 23rem;
+  }
+  
+  #formSubmit_btn[type='submit']:hover {
+    background-color: #45a049;
+  }
+  
+  /* Media queries for responsiveness */
+  @media screen and (max-width:1000px) {
+  #contact_form{
+    margin-left:20rem;
+  }
+}
+  @media screen and (max-width: 700px) {
+    #contact_form{
+      margin-left:10rem;
+    }
+  }
+  @media screen and (max-width: 576px) {
+    #contact_form{
+      margin-left:1.7rem;
+    }
+  }
