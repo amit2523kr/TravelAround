@@ -3,7 +3,6 @@
   "name": "travelapp",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/amit2523kr/TravelAround",
   "dependencies": {
     "@stripe/stripe-js": "^1.52.1",
     "@testing-library/jest-dom": "^5.16.5",
