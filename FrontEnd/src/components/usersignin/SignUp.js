@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate} from "react-router-dom";
-import bcrypt from "bcryptjs";
+
 import "../usersignin/signin.css";
 const Signup=()=>{
     const history = useNavigate();
