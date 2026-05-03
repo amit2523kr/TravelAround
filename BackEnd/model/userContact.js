@@ -1,12 +1,14 @@
 const mongoose=require("mongoose")
 const customerSupportSchema=new mongoose.Schema({
+   name:{
+        type:String
+    },
    email:{
         type:String,
         required:true
     },
     number:{
-        type:String,
-        required:true
+        type:String
     },
     message:{
         type:String,

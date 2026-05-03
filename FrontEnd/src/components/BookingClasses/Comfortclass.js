@@ -32,7 +32,7 @@ const Comfortclass=()=>{
                 <div className="bookingstat">
                     <p>${item.price}</p>
                     <p>inludes taxes</p>
-                    <Popupform  price={item.price} />
+                    <Popupform price={item.price} hotelName={item.name} />
                 </div>
                 </div>
                 </>

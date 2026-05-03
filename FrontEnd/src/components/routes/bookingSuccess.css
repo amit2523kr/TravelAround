@@ -1,0 +1,133 @@
+.success-wrapper {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 7rem 1rem 4rem;
+}
+
+.success-card {
+  position: relative;
+  width: min(580px, 100%);
+  background: var(--navy-2);
+  border: 1px solid rgba(201, 168, 76, 0.18);
+  border-radius: 24px;
+  padding: 2rem;
+  overflow: hidden;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+}
+
+.success-strip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #2ecc71, var(--gold), var(--gold-light), #ffffff);
+}
+
+.success-top {
+  text-align: center;
+}
+
+.check-mark {
+  width: 68px;
+  height: 68px;
+  margin: 0 auto 0.9rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--success);
+  color: var(--navy);
+  font-size: 2rem;
+  animation: checkPop 0.58s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.success-eyebrow {
+  margin: 0 0 0.45rem;
+  color: var(--success);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.success-card .lux-title {
+  font-size: clamp(2.5rem, 8vw, 3.8rem);
+}
+
+.booking-meta {
+  margin: 1.4rem 0;
+  padding: 0.2rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius);
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.detail-row:last-child {
+  border-bottom: 0;
+}
+
+.detail-row span {
+  color: var(--text-muted);
+}
+
+.detail-row strong {
+  color: var(--white);
+  font-weight: 500;
+  text-align: right;
+}
+
+.detail-row .mono {
+  color: var(--gold);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.detail-row .amount {
+  color: var(--gold-light);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.success-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+@keyframes checkPop {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 560px) {
+  .success-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .success-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-row {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .detail-row strong {
+    text-align: left;
+  }
+}

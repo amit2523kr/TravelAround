@@ -1,5 +1,14 @@
 const mongoose=require("mongoose")
 const bookingDetails=new mongoose.Schema({
+    hotelName:{
+        type:String
+    },
+    email:{
+        type:String
+    },
+    room:{
+        type:String
+    },
     name:{
         type:String,
         required:true
@@ -23,6 +32,12 @@ const bookingDetails=new mongoose.Schema({
     price:{
         type:Number,
         required:true
+    },
+    bookingId:{
+        type:String
+    },
+    paidAt:{
+        type:String
     }
 })
 

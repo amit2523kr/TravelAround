@@ -1,13 +1,203 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #0b1220;
+  --navy-2: #131d30;
+  --navy-3: #1c2a44;
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --gold-dim: rgba(201, 168, 76, 0.15);
+  --text-muted: #8a9ab5;
+  --white: #ffffff;
+  --success: #2ecc71;
+  --danger: #e74c3c;
+  --radius: 16px;
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background: var(--navy);
+  }
+
+  body {
+    @apply antialiased;
+    margin: 0;
+    background: var(--navy);
+    color: var(--white);
+    font-family: "DM Sans", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+  }
+
+  p {
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+
+  button,
+  a {
+    transition: var(--transition);
+  }
+
+  ::selection {
+    background: var(--gold-dim);
+    color: var(--gold-light);
+  }
+}
+
+.lux-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(201, 168, 76, 0.12), transparent 34rem),
+    linear-gradient(180deg, var(--navy), #09101d);
+  color: var(--white);
+  padding-top: 84px;
+}
+
+.lux-container {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.lux-eyebrow {
+  color: var(--gold);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin: 0 0 0.6rem;
+}
+
+.lux-title {
+  margin: 0;
+  color: var(--white);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.2rem, 5vw, 4.3rem);
+  font-weight: 300;
+  line-height: 0.95;
+}
+
+.lux-title em {
+  color: var(--gold-light);
+  font-style: italic;
+}
+
+.lux-card {
+  background: var(--navy-2);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius);
+}
+
+.lux-input,
+.lux-select,
+.lux-textarea {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--white);
+  padding: 0.82rem 0.95rem;
+  outline: none;
+  transition: var(--transition);
+}
+
+.lux-input:focus,
+.lux-select:focus,
+.lux-textarea:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 4px var(--gold-dim);
+}
+
+.lux-label {
+  display: grid;
+  gap: 0.45rem;
+  color: var(--gold);
+  font-size: 0.67rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.lux-btn-primary,
+.lux-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border-radius: 50px;
+  padding: 0.78rem 1.35rem;
+  cursor: pointer;
+  text-decoration: none;
+  border: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.lux-btn-primary {
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  color: var(--navy);
+}
+
+.lux-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(201, 168, 76, 0.28);
+}
+
+.lux-btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(201, 168, 76, 0.5);
+  color: var(--gold);
+}
+
+.lux-btn-ghost:hover {
+  background: var(--gold-dim);
+}
+
+.lux-pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 50px;
+  background: var(--gold-dim);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  color: var(--gold);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.32rem 0.62rem;
+}
+
+.reveal {
+  animation: luxReveal 0.7s ease both;
+}
+
+.reveal-stagger > * {
+  animation: luxReveal 0.7s ease both;
+}
+
+.reveal-stagger > *:nth-child(2) { animation-delay: 0.12s; }
+.reveal-stagger > *:nth-child(3) { animation-delay: 0.24s; }
+.reveal-stagger > *:nth-child(4) { animation-delay: 0.36s; }
+.reveal-stagger > *:nth-child(5) { animation-delay: 0.48s; }
+
+@keyframes luxReveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

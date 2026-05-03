@@ -9,9 +9,12 @@ const Form = () => {
   async function handleSubmit(e){
     e.preventDefault();
     try{
-      await axios.post("https://travelaround-backend.onrender.com/message/",{
+      await axios.post("http://localhost:8000/message/",{
         email,number,message
       })
+      setEmail('');
+      setNumber('');
+      setMessage('');
     }
     catch(e){
       console.log(e);

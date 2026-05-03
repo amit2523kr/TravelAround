@@ -1,53 +1,81 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import GoogleSignInButton from "./GoogleSignInButton";
 import "../usersignin/signin.css";
-const Login=(props)=>{
-    const history = useNavigate();
-    const[email,setEmail]=useState('');
-    const[password,setPassword]=useState('');
-    async function submit(e){
-        e.preventDefault();
-        try{
-            await axios.post("https://travelaround-backend.onrender.com/login/",{
-                email,password
-            })
-            .then(res=>{
-                if(res.data ==="exist"){
-                    props.setIsLoggedIn(true);
-                    history("/")
-                }else if(res.data ==="donot exist"){
-                   alert("User has not signed up or wrong password");
-                }
-            })
-            .catch(e=>{
-                alert("wrong details");
-                console.log(e);
-            })
-        }catch(e){
-            console.log(e);
-        }
+
+const Login = ({ setIsLoggedIn }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const redirectPath = location.state?.from || "/";
+  const redirectState = location.state?.bookingState;
+
+  const finishLogin = useCallback(() => {
+    setIsLoggedIn(true);
+    navigate(redirectPath, { replace: true, state: redirectState });
+  }, [navigate, redirectPath, redirectState, setIsLoggedIn]);
+
+  const handleGoogleSuccess = useCallback(() => {
+    finishLogin();
+  }, [finishLogin]);
+
+  async function submit(e) {
+    e.preventDefault();
+    try {
+      await axios
+        .post("http://localhost:8000/login/", { email, password })
+        .then((res) => {
+          if (res.data === "exist") {
+            finishLogin();
+          } else if (res.data === "donot exist") {
+            alert("User has not signed up or wrong password");
+          }
+        })
+        .catch((error) => {
+          alert("wrong details");
+          console.log(error);
+        });
+    } catch (error) {
+      console.log(error);
     }
-   
-    return(
-        <div id="container" className="container-fluid  py-3 box" >
-        <div id="row" className="row">
-            <div className="col-md-5 col-sm-6 col-xs-6  ">
-            <h3 className="mt-5 mx-5 text-white"><i>Tour Arena</i></h3>
-            
-            <p className="mx-4 mt-5 text-white">welcome to our Trip.Book now!</p>
-            <form action="/signup" method="post">
-                <input className="form-control mt-5" type="text" onChange={(e)=>{setEmail(e.target.value)}} placeholder="Email" required/>
-                <input  className="form-control mt-3"  type="password" onChange={(e)=>{setPassword(e.target.value)}} placeholder="Password"  required/>
-                <input id="submit_btn" className=" button bg-primary text-white" type="submit" onClick={submit} />
-            </form>
-            <br />
-            <p className="or text-white">OR</p>
-            <br />
-            <a id="submit_btn" className="login text-white" href="/signup">Signup page</a>
-        </div>
-    </div>
-    </div>
-    )
-}
+  }
+
+  return (
+    <section className="auth-shell">
+      <motion.div className="auth-card" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: "easeOut" }}>
+        <p className="lux-eyebrow">✦ Member Access</p>
+        <h1 className="lux-title">Welcome <em>back</em></h1>
+        <p className="auth-subtitle">Enter your private travel desk and continue planning refined stays.</p>
+        {location.state?.notice ? <p className="auth-notice">{location.state.notice}</p> : null}
+
+        <GoogleSignInButton onSuccess={handleGoogleSuccess} />
+
+        <div className="auth-divider"><span>or continue with email</span></div>
+
+        <form className="auth-form" onSubmit={submit}>
+          <label className="lux-label">
+            Email
+            <input className="lux-input" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="name@email.com" required />
+          </label>
+
+          <label className="lux-label">
+            <span className="label-row">
+              Password
+              <Link to="/login">Forgot password?</Link>
+            </span>
+            <input className="lux-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
+          </label>
+
+          <button className="lux-btn-primary auth-submit" type="submit">Sign In</button>
+        </form>
+
+        <p className="auth-switch">New here? <Link to="/signup">Create an account</Link></p>
+      </motion.div>
+    </section>
+  );
+};
+
 export default Login;

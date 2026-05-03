@@ -1,57 +1,79 @@
-.footer{
-    padding: 4rem 6rem;
-    background: black;
-    color: #fff;
+.footer {
+  background: var(--navy-2);
+  color: var(--white);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 3.6rem 0;
 }
-.top{
-    display: flex;
-    align-items: center;
-    text-align: start;
-    justify-content: space-between;
-    flex-wrap: wrap;
+
+.footer-grid {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr repeat(3, 1fr);
+  gap: 2rem;
 }
-.icon{
-    color: #fff;
-    font-size:2rem;
-    margin-top: 1rem;
-    margin-left: 0.5rem;
+
+.footer h2 {
+  margin: 0 0 0.7rem;
+  color: var(--gold);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.8rem;
+  font-weight: 400;
 }
-.icon:hover{
-        color: #01959a;
+
+.footer h4 {
+  margin: 0 0 1rem;
+  color: var(--gold);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
 }
-.bottom{
-    padding-top: 2rem;
-    text-align: start;
-    display: flex;
-    justify-content:space-around;
-    flex-wrap: wrap;
+
+.footer p {
+  max-width: 300px;
+  margin: 0 0 1rem;
 }
-.bottom div{
-    display: flex;
-    flex-direction: column;
+
+.footer a {
+  display: block;
+  color: rgba(255, 255, 255, 0.68);
+  text-decoration: none;
+  margin-bottom: 0.55rem;
+  font-size: 0.92rem;
 }
-.bottom h4{
-    font-size:1.3rem ;
-    padding: 1rem 0 0.8rem 0;
+
+.footer a:hover {
+  color: var(--gold-light);
 }
-.bottom a{
-    text-decoration: none;
-    color:#fafafa;
-    padding-bottom: .4rem;
-    font-size:1.1rem ;
+
+.footer-socials {
+  display: flex;
+  gap: 0.6rem;
 }
-@media screen and (max-width:850px) {
-    .footer{
-        padding: 4rem 2rem;
-       
-    }
-    .icon{
-        margin: 1rem 1rem 0 0;
-    }
-    .bottom div{
-       width: 50%; 
-    }
-    .bottom{
-        flex-direction: column;
-    }
+
+.footer-socials a {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  color: var(--gold);
+}
+
+.footer-socials a:hover {
+  background: var(--gold-dim);
+}
+
+@media (max-width: 820px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
 }
